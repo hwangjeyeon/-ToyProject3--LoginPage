@@ -7,14 +7,11 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.http.HttpResponse;
 
 
 @Slf4j
@@ -52,7 +49,7 @@ public class LoginController {
         return "redirect:/login_ok";
     }
 
-    @GetMapping("login_ok")
+    @GetMapping("/login_ok")
     public String login_User(@SessionAttribute(name="User", required = false) Member loginPeople, Model model){
 
         
@@ -73,5 +70,11 @@ public class LoginController {
             session.invalidate();
         }
         return "redirect:/login";
+    }
+
+    @GetMapping("/personal_page")
+    public String personal_page(@SessionAttribute(name="User", required = false) Member loginPeople, Model model){
+        model.addAttribute("member", loginPeople);
+        return "Personal_Page";
     }
 }
