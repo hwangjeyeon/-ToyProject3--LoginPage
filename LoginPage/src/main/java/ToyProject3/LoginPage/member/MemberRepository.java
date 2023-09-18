@@ -29,13 +29,13 @@ public class MemberRepository {
 
     public Optional<Member> findByP_id(String loginId){
             return findAll().stream()
-                    .filter(t -> t.getPersonal_Id().equals(loginId))
+                    .filter(m -> m.getPersonal_Id().equals(loginId))
                     .findFirst();
     }
 
     public Optional<Member> findBy_name(String name){
             return findAll().stream()
-                    .filter(t-> t.getName().equals(name))
+                    .filter(m-> m.getName().equals(name))
                     .findAny();
     }
     public List<Member> findAll(){
