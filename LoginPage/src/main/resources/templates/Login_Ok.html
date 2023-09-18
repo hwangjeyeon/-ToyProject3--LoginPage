@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="css/bootstrap.min.css" rel="stylesheet">
     <title>로그인 페이지</title>
     <style>
         .login_container{
@@ -45,20 +46,19 @@
             </div>
 
             <div>
-                <p>
+                <p th:text="|사용자: ${member.name}|">
                     사용자: 이름
                 </p>
             </div>
             <hr/>
-    
-            <form class="row">
-                <div class="col">
-                    <button class="w-100 btn btn-primary btn-lg button_design" type="submit">개인 페이지</button>
-                </div>
-                <div class="col">
-                    <button class="w-100 btn btn-secondary btn-lg button_design" type="button">로그아웃</button>
-                </div>
-            </form>
+            <div class="row">
+                <form class="col">
+                        <button class="w-100 btn btn-primary btn-lg button_design" type="button">개인 페이지</button>
+                </form>
+                <form class="col" th:action="@{/logout}" method="post">
+                        <button class="w-100 btn btn-secondary btn-lg button_design" type="submit">로그아웃</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>
