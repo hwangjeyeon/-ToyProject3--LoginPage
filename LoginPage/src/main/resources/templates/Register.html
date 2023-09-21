@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    
+        .register_container {
+            background-color: #f0f0f0;
+            padding: 100px; /* 박스 영역의 내부 패딩을 크게 조절 */
+            width: 600px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            
+            
+        }
+    
+        .register_container label {
+            display: block;
+            margin-bottom: 10px;
+            text-align: left; /* 텍스트 가운데 정렬 */
+        }
+    
+        .register_container input[type="text"],
+        .register_container input[type="password"] {
+            width: 100%;
+            padding: 15px; /* 입력 필드 높이를 크게 조절 */
+            margin-bottom: 15px; /* 입력 필드 간격을 크게 조절 */
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    
+        .register_container button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 18px; /* 버튼 텍스트 크기를 크게 조절 */
+            width: 250px;
+            height: 50px;
+        }
+    
+        .register_container button[type="submit"] {
+            background-color: #28a745;
+            width: 300px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="register_container">
+        <h1>회원가입</h1>
+        <form action="/register" method="post">
+            <label>아이디</label>
+            <input type="text" id="Personal_Id" name="Personal_Id" placeholder="아이디를 입력하세요" required>
+            <br>
+            <label>비밀번호</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+<!--            <br>-->
+<!--            <label>비밀번호 확인</label>-->
+<!--            <input type="password" name="confirmPassword" placeholder="비밀번호를 다시 입력하세요" required>-->
+            <br>
+            <label>이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+            <br>
+            <button type="submit">회원가입</button>
+            <button type="button" onclick="location.href='/login'">취소</button>
+        </form>
+    </div>
+</body>
+</html>
