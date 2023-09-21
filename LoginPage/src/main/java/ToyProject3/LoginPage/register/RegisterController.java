@@ -1,0 +1,34 @@
+package ToyProject3.LoginPage.register;
+
+
+import ToyProject3.LoginPage.member.Member;
+import ToyProject3.LoginPage.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Slf4j
+@Controller
+@RequiredArgsConstructor
+public class RegisterController {
+
+
+    private final MemberRepository memberRepository;
+
+    @GetMapping("/register")
+    public String register(){
+        return "Register";
+    }
+
+    @PostMapping("/register")
+    public String addRegister(@ModelAttribute Member member){
+        memberRepository.save(member);
+        log.info("id = {}", memberRepository.findByP_id(member.getPersonal_Id()));
+        return "redirect:/login";
+    }
+
+
+}
