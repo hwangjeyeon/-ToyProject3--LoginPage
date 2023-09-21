@@ -33,7 +33,10 @@
         .button_design{
             border-radius: 100px;
         }
-        
+        button{
+            display: flex;
+            width: 270px;
+        }
 
     </style>
 </head>
@@ -60,7 +63,10 @@
 
                 <div>
                     <div>
-                        <button class="w-100 btn btn-primary btn-lg button_design" type="submit">로그인</button>
+                        <button class="btn btn-primary btn-lg button_design" type="submit">로그인</button>
+                        <button class="btn btn-secondary btn-lg button_design" type="button"
+                                onclick="location.href='/register'"
+                        th:onclick="|location.href='@{/register}'|">회원가입</button>
                     </div>
                 </div>
 
