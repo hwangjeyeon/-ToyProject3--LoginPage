@@ -59,18 +59,18 @@
                 </div>
                 <div style="margin-bottom: 20px;">
                     <label for="Personal_Id" th:text="#{login.personal_id}">아이디</label>
-                    <input id="Personal_Id" th:field="*{Personal_Id}" th:errorclass="field-error" name="Personal_Id" class="input"
+                    <input id="Personal_Id" th:field="*{Personal_Id}" th:errorclass="field-error" class="input"
                            placeholder="아이디를 입력하세요" type="text">
                     <div class="field-error" th:errors="*{Personal_Id}" />
                 </div>
                 <div style="margin-bottom: 20px;">
                     <label for="password" th:text="#{login.password}">비밀번호</label>
-                    <input id="password" th:field="*{password}" th:errorclass="field-error" name="password" class="input" placeholder="비밀번호를 입력하세요" type="password">
+                    <input id="password" th:field="*{password}" th:errorclass="field-error"  class="input" placeholder="비밀번호를 입력하세요" type="password">
                     <div class="field-error" th:errors="*{password}" />
                 </div>
                 <div style="margin-bottom: 40px;">
                     <label for="name" th:text="#{login.name}">이름</label>
-                    <input id="name" th:field="*{name}" th:errorclass="field-error" name="name" class="input" placeholder="이름을 입력하세요" type="text">
+                    <input id="name" th:field="*{name}" th:errorclass="field-error"  class="input" placeholder="이름을 입력하세요" type="text">
                     <div class="field-error" th:errors="*{name}" />
                 </div>
                 
