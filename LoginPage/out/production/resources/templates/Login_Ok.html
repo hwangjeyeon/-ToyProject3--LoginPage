@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="./css/bootstrap.min.css" rel="stylesheet">
+    <title>로그인 페이지</title>
+    <style>
+        .login_container{
+            max-width: 560px;
+            align-content: center;
+            margin: auto;
+        }
+
+        .input{
+            width: 560px;
+            font-size: 15px;
+            height: 50px;
+            align-content: center;
+            margin: auto;
+            border: 0;
+            border-radius: 0;
+            outline: none;
+            padding-left: 10px;
+            background-color: #DEDEDE;
+            
+        }
+        
+        body{
+            min-width: 1500px;
+        }
+
+        .button_design{
+            border-radius: 100px;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <div class="login_container" style="margin-top:150px";>
+        <div>
+            <div class="py-5 text-center">
+                <h2>환영합니다!</h2>
+            </div>
+
+            <div>
+                <p th:text="|사용자: ${member.name}|">
+                    사용자: 이름
+                </p>
+            </div>
+            <hr/>
+            <div class="row">
+                <form class="col" th:action="@{/personal_page}" method="get">
+                        <button class="w-100 btn btn-primary btn-lg button_design" type="submit">개인 페이지</button>
+                </form>
+                <form class="col" th:action="@{/logout}" method="post">
+                        <button class="w-100 btn btn-secondary btn-lg button_design" type="submit">로그아웃</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

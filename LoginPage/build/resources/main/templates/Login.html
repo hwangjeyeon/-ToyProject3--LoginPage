@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}"
+            href="/css/bootstrap.min.css" rel="stylesheet">
     <title>로그인 페이지</title>
     <style>
         .login_container{
@@ -32,34 +33,48 @@
         .button_design{
             border-radius: 100px;
         }
-        
+        button{
+            display: flex;
+            width: 270px;
+        }
+
+        .field-error{
+            border-color: #dc3545;
+            color: #dc3545;
+        }
 
     </style>
 </head>
 <body>
 
-    <div class="login_container" style="margin-top:150px";>
+    <div class="login_container" style="margin-top:100px";>
         <div>
             <div class="py-5 text-center">
                 <h2>로그인</h2>
             </div>
     
-            <form>
+            <form action="" th:action th:object="${Login}"  method="post">
+                <div th:if="${#fields.hasGlobalErrors()}">
+                    <p class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">오류 발생</p>
+                </div>
                 <div style="margin-bottom: 20px;">
-                    <input id="P_id" class="input" placeholder="아이디를 입력하세요" type="text">
+                    <input id="Personal_Id" th:field="*{Personal_Id}" th:errorclass="field-error" name="Personal_Id" class="input" placeholder="아이디를 입력하세요" type="text">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <input id="password" th:field="*{password}" th:errorclass="field-error" name="password" class="input" placeholder="비밀번호를 입력하세요" type="password">
                 </div>
                 <div style="margin-bottom: 40px;">
-                    <input id="password" class="input" placeholder="비밀번호를 입력하세요" type="password">
+                    <input id="name" th:field="*{name}" th:errorclass="field-error" name="name" class="input" placeholder="이름을 입력하세요" type="text">
                 </div>
                 
                 <hr />
 
-                <div class="row">
-                    <div class="col">
-                        <button class="w-100 btn btn-primary btn-lg button_design" type="submit">로그인</button>
-                    </div>
-                    <div class="col">
-                        <button class="w-100 btn btn-secondary btn-lg button_design" type="button">회원가입</button>
+                <div>
+                    <div>
+                        <button class="btn btn-primary btn-lg button_design" type="submit">로그인</button>
+                        <button class="btn btn-secondary btn-lg button_design" type="button"
+                                onclick="location.href='/register'"
+                        th:onclick="|location.href='@{/register}'|">회원가입</button>
                     </div>
                 </div>
 
