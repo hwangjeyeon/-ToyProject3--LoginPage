@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+            href="/css/bootstrap.min.css" rel="stylesheet">
+    <title>로그인 페이지</title>
+    <style>
+        .login_container{
+            max-width: 560px;
+            align-content: center;
+            margin: auto;
+        }
+
+        .input{
+            width: 560px;
+            font-size: 15px;
+            height: 50px;
+            align-content: center;
+            margin: auto;
+            border: 1;
+            border-radius: 0;
+            outline: none;
+            padding-left: 10px;
+            background-color: #DEDEDE;
+            
+        }
+        
+        body{
+            min-width: 1500px;
+        }
+
+        .button_design{
+            border-radius: 100px;
+        }
+        button{
+            display: flex;
+            width: 270px;
+        }
+
+        .field-error{
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="login_container" style="margin-top:100px";>
+        <div>
+            <div class="py-5 text-center">
+                <h2>로그인</h2>
+            </div>
+    
+            <form action="" th:action th:object="${Login}"  method="post">
+                <div th:if="${#fields.hasGlobalErrors()}">
+                    <p class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">오류 발생</p>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label for="Personal_Id" th:text="#{login.personal_id}">아이디</label>
+                    <input id="Personal_Id" th:field="*{Personal_Id}" th:errorclass="field-error" name="Personal_Id" class="input"
+                           placeholder="아이디를 입력하세요" type="text">
+                    <div class="field-error" th:errors="*{Personal_Id}" />
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label for="password" th:text="#{login.password}">비밀번호</label>
+                    <input id="password" th:field="*{password}" th:errorclass="field-error" name="password" class="input" placeholder="비밀번호를 입력하세요" type="password">
+                    <div class="field-error" th:errors="*{password}" />
+                </div>
+                <div style="margin-bottom: 40px;">
+                    <label for="name" th:text="#{login.name}">이름</label>
+                    <input id="name" th:field="*{name}" th:errorclass="field-error" name="name" class="input" placeholder="이름을 입력하세요" type="text">
+                    <div class="field-error" th:errors="*{name}" />
+                </div>
+                
+                <hr />
+
+                <div>
+                    <div>
+                        <button class="btn btn-primary btn-lg button_design" type="submit">로그인</button>
+                        <button class="btn btn-secondary btn-lg button_design" type="button"
+                                onclick="location.href='/register'"
+                        th:onclick="|location.href='@{/register}'|">회원가입</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>

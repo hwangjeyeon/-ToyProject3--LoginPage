@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -32,15 +34,24 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String loginTry(@ModelAttribute("Login") LoginForm form, HttpServletRequest request){
+    public String loginTry(@Validated @ModelAttribute("Login") LoginForm form, BindingResult bindingResult, HttpServletRequest request){
+
+
+
+        //로그인 폼 작성 오류
+        if(bindingResult.hasErrors()){
+            log.info("로그인 폼 작성 오류가 발생했습니다.");
+            return "/login";
+        }
+
         Member loginPeople = loginService.login(form.getPersonal_Id(),form.getPassword(), form.getName());
 
 
         // 로그인 객체 검증
         if(loginPeople == null){
-
             log.info("해당하는 계정이 없습니다");
-            return "Login";
+            bindingResult.reject("loginFail", "해당하는 계정이 없습니다.");
+            return "/login";
         }
 
         // 세션 생성 -> 있으면 세션 반환, 없으면 새로운 세션 생성

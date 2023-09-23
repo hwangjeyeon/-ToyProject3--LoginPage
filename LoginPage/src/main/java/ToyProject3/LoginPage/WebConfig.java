@@ -1,7 +1,6 @@
 package ToyProject3.LoginPage;
 
 import ToyProject3.LoginPage.Login.LoginInterceptor;
-import ToyProject3.LoginPage.log.LogInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
